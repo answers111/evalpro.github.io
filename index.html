@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="HumanEval Pro and MBPP Pro: Evaluating Large Language Models on Self-invoking Code Generation Task">
+  <meta name="keywords" content="code, LLM, code generation,reasoning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HumanEval Pro and MBPP Pro: Evaluating Large Language Models on Self-invoking Code Generation Task</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <img src="./figure/logo2.png" width="80px" />
+            <h1 class="title is-1 publication-title">HumanEval Pro and MBPP Pro: Evaluating Large Language Models on
+              Self-invoking Code Generation Task
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://answers111.github.io/">Zhaojian Yu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://yilunzhao.github.io/">Yilun Zhao</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://armancohan.com/">Arman Cohan</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sites.google.com/view/xiaopingzhang/">Xiao-Ping Zhang</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tsinghua University</span>
+              <span class="author-block"><sup>2</sup>Yale University</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2412.21199v1" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/CodeEval-Pro/CodeEval-Pro"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>HF Dataset</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="./leaderboard.html" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-trophy"></i>
+                    </span>
+                    <span>Leaderboard</span>
+                  </a>
+                </span>
+
+                <!-- <span class="link-block">
+                  <a href="./demo.html" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-search"></i>
+                    </span>
+                    <span>Sample Explorer</span>
+                  </a>
+                </span>
+              </div>
+            </div> -->
+
+                <br>
+                <img src="./figure/distribution.png" width="100%" />
+                <img src="./figure/evaluation_pipeline.png" width="100%" />
+
+              </div>
+            </div>
+          </div>
+        </div>
+  </section>
+
+
+  <section class="section" style="margin:0; padding:0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              We present HumanEval Pro and MBPP Pro, two expanded versions of the traditional HumanEval and MBPP
+              benchmarks to evaluate LLMs on self-invoking code generation task.
+              Self-invoking code generation, a new task designed to evaluate the progressive reasoning and
+              problem-solving capabilities of LLMs. In this task, models are presented with a base problem and a
+              related, more complex problem. They must solve the base problem and then utilize its solution to address
+              the more complex one.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Benchmark Construction</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <img src="./figure/benchmark_construction.png" width="100%" />
+
+            <p>
+
+              The benchmark was constructed as follows:
+            <ol>
+              <li> Self-invoking problem Generation: We use Deepseek-V2.5 to
+                generate the self-invoking problems, as well as their candidate solutions and test inputs. </li>
+              <li> Solutions Generation: We execute the generated solution with the test inputs in a controlled Python
+                environment to obtain ground truth
+                outputs. </li>
+              <li> Test Cases Generation: We employ an iterative method involving Python execution check and manual
+                review to ensure that all test cases pass successfully. The final execution results are then used to
+                construct complete
+                test cases with assert command.
+            </ol>
+            </p>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+            <ol>
+              <li> Most LLMs have a 10% to 15% absolute performance drop on self-invoking code generation benchmarks.
+              </li>
+              <li> Large size open-source LLMs have comparable performance with proprietary LLMs on self-invoking
+                benchmarks. </li>
+              <li> Most instruction-tuned models
+                have less improvements on self-invoking code generation benchmarks (e.g., HumanEval Pro) than
+                traditional benchmarks (e.g.,HumanEval). For instance, Qwen2.5Coder-32B-instruct have 26.8%
+                absolute improvement on HumanEval compared to
+                Qwen2.5Coder-32B-base (from 65.9% to 92.7%)
+                but only 8.5% on HumanEval Pro (from 61.6%
+                to 70.1%). </li>
+            </ol>
+            </p>
+          </div>
+          <em>Figure 1: Main result of different models on HumanEval Pro and MBPP Pro. </em>
+          <img src="./figure/main_res.png" width="80%" />
+          <br>
+          <br>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Insights</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              The instruction-tuned models demonstrate only marginal improvements compared to the base models on
+              self-invoking code generation. When observing the correlation between HumanEval (or MBPP) and HumanEval
+              Pro (or MBPP Pro), we see that the orange dot (indicates base model) is always to the upper left of the
+              blue dot (indicates instruction-tuned model).
+              However, for the comparison between HumanEval (or MBPP) and HumanEval+ (or MBPP+), the blue dot is always
+              distributed to the upper of orange dot (even in a line on HumanEval vs HumanEval+).
+              Overall, this suggests that while instruction-based fine-tuning significantly improves performance on
+              simpler benchmarks like HumanEval (+) (or MBPP (+)), its efficiency diminishes for more complex
+              self-invoking code generation tasks.
+            </p>
+          </div>
+          <img src="./figure/plot.png" width="80%" />
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              Although some
+              SoTA LLMs such as Qwen2.5-Coder-32B-instruct
+              successfully solve 90% of base problems on the
+              original HumanEval and MBPP benchmarks, over
+              25% of problems still fail on more challenging
+              HumanEval Pro and MBPP Pro benchmarks with
+              self-invoking code generation (as shown in the top
+              right of each subfigure in Figure 5). This suggests
+              that the drop in the model's scores on HumanEval
+              Pro and MBPP Pro is largely due to its lower accuracy in generating self-invoking code compared to
+              direct code generation.
+            </p>
+          </div>
+          <img src="./figure/cm.png" width="80%" />
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              The instruction-tuned model typically has a significantly higher number of (Passed, Passed)
+              instances compared to the base model. However, for samples that pass the base problems
+              but fail in HumanEval Pro and MBPP Pro, i.e.,
+              (Failed, Passed), the instruct model does not
+              demonstrate notable improvement.
+            </p>
+          </div>
+          <br>
+          <br>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Chain of Thought</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              Using CoT led to some improvements, after applying CoT, the pass@1 of the selected models on HumanEval Pro
+              witnesses a significant improvement. Notably, the accuracy of GPT-4o increases from 75.0% to 78.0%. On
+              MBPP Pro, although the model does not show a significant improvement, it still maintains its original
+              performance level, indicating that CoT can enhance the accuracy of model-generated code to a notable
+              degree.
+            </p>
+          </div>
+          <img src="./figure/cot_tab.png" width="40%" />
+          <img src="./figure/cot_fig.png" width="40%" />
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              CoT could help Code LLMs to generate more reliable code when scheduling across multiple code-related
+              problems. The AssertionError number decreases from 28 to 24. This indicates that CoT prompting enables the
+              model to generate code that more frequently passes test cases.
+              The NameError number decreases, which indicates that CoT prompting helps the model produce more
+              self-contained code snippets and reduces the use of undefined variables.
+              These findings highlight that CoT prompting could help LLMs to generate more accurate and reliable
+              solution on self-invoking code generation task.
+            </p>
+          </div>
+          <br>
+          <br>
+        </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Error Types</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              Primarily, \textit{AssertionErrors} constitute the primary source of errors for all models on
+              self-invoking code generation task, which suggests that the majority of errors are still due to failing
+              test cases.
+              Secondly, the \textit{NameErrors}, which is often caused by the undefined variable or function, contribute
+              significantly to the error rate. This suggests that despite the function infomation being provided in the
+              prompt, many functions still fail to generate the correct function header. This may indicate that the LLM
+              has issues with understanding or correctly utilizing the provided information. Finally, we also found that
+              some \textit{TypeErrors} and \textit{ValueErrors} accounted for a relatively small proportion of errors,
+              which shows that LLM still has some deficiencies in handling variable types and usage when generating
+              self-invoking code.
+            </p>
+          </div>
+          <img src="./figure/error.png" width="50%" />
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p> <b>
+                Overall, we believe that HumanEval Pro and MBPP Pro provides a complementary perspective to
+                LLM code & reasoning ability evaluations such as HumanEval and MBPP and encourage creators
+                of future LMs to evaluate on our benchmark!
+              </b> </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{gu2024cruxeval,
+  title={CRUXEval: A Benchmark for Code Reasoning, Understanding and Execution}, 
+  author={Alex Gu and Baptiste Rozière and Hugh Leather and Armando Solar-Lezama and Gabriel Synnaeve and Sida I. Wang},
+  year={2024},
+  journal = {arXiv preprint arXiv:2401.03065},
+}
+</code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              The source code from this website is borrowed from <a
+                href="https://github.com/nerfies/nerfies.github.io">this template</a>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
