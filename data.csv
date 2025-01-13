@@ -22,3 +22,6 @@ DeepseekCoder-33B-instruct,79.3,80.4,56.7,64.0,'https://huggingface.co/deepseek-
 Qwen2.5-Coder-32B-base,65.9,83.0,61.6,67.7,'https://huggingface.co/Qwen/Qwen2.5-Coder-32B'
 Qwen2.5-Coder-32B-instruct,92.7,90.2,70.1,69.8,'https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct'
 LLaMA3-70B-instruct,81.7,82.3,60.4,63.5,'https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct'
+QwQ-32B-preview,-,-, 72.0,67.5,'https://huggingface.co/Qwen/QwQ-32B-Preview'
+Mistral-Large-instruct-2411,-,-, 75.0,69.3,''
+LLaMA-3.3-70B-instruct,-,-, 67.1,64.6,'https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct'
